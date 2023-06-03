@@ -1,0 +1,63 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+    <title>Home Page</title>
+{% endblock %}
+
+{% block body_block  %}
+<center>
+
+<u style="color: white;"><h2> {{Qcl.title}}</h2><br></u>
+
+<style>
+    td{
+        text-align: center;
+    }
+
+    table{
+            border-collapse: separate;
+            border-spacing: 10px; 
+            border-top: 20px;
+        }
+</style>
+
+
+<table border="2px" style="text-align: center;">
+    <tr>
+        <th>Answer</th>
+        <th>Answered by</th>
+        <th>Answered on</th>
+        <th>Click to like</th>
+        <th>Liked By</th>
+    </tr>
+    {% for i in Qcl.question.all %}
+
+        <tr style="color: white;">
+        <td > {{i.description}}</td>
+        <td> {{i.user}}</td>
+       
+        <td>{{i.created_at}}</td>
+        
+     
+        <td><form action="{% url 'like_post' %}" method="POST" class="ui form"  class="form-group1">
+            {% csrf_token %}
+            <input  type="checkbox" name="cb" id="cb" value="{{i.pk}}" >
+            <input type="submit" value="Like" style="background-color: #BDBDBD;">
+        </form></td>
+        <td>
+            {% for j in i.likes.all %}
+                <b>{{j.user}}</b>
+            {% endfor %}
+        </td>
+        </tr>
+
+     {% endfor %}
+
+</table>
+
+</center>
+
+
+
+
+{% endblock %}

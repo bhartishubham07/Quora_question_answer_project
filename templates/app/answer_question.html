@@ -1,0 +1,26 @@
+{% extends 'app/base.html' %} {% block title %}
+
+<title>Registration</title>
+{% endblock %} {% block body_block %}
+<div>
+  <center>
+    <h1>Answer the Question</h1>
+    <br>
+  
+  <div class="container">
+    <h2>{{question.title}}</h2>
+    <p>{{question.description}}</p>
+
+    <form method="POST">
+      {% csrf_token %} 
+      {{AQO.as_p}}
+
+      
+        <input type="submit" value="Post">
+    
+      <br><br><br><br>
+    </form>
+  </div>
+</center>
+</div>
+{% endblock %}

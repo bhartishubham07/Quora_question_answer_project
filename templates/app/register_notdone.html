@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+
+
+{% block title  %}
+    <title>Error</title>
+{% endblock  %}
+
+
+{% block body_block %}
+<center>
+    <br>
+    <br>
+    <br>
+    <div style= margin-top: 300px; >
+    
+  <h1 style="color: white;" class="fas fa-times-circle">  Your not Registered</h1 >
+    </div>
+    <br>
+    <br>
+   <b> <a href="{% url 'registeration' %}">Register here</a>   </b>
+</center>
+{% endblock  %}
+    
+    

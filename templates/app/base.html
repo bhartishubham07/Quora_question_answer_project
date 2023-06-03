@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block title %}
+    <title>Document</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
+      <div class="container-fluid d-flex justify-content-end">
+        <a href="{% url 'admin:index' %}" class="nav nav-link text-white"
+          >Admin-Page</a
+        >
+        <a href="{% url 'registeration' %}" class="nav nav-link text-white"
+          >Registeration</a
+        >
+
+        <a href="{% url 'QuestionList' %}" class="nav nav-link text-white">Home-Page</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'answer_question' %}" class="nav nav-link text-white">Answer-Question</a>
+
+        <a href="{% url 'ask_question' %}" class="nav nav-link text-white">Ask-Question</a>
+        <a href="{% url 'user_logout' %}" class="nav nav-link text-white"
+          >Logout</a
+        >
+        {% else %}
+        <a href="{% url 'user_login' %}" class="nav nav-link text-white"
+          >Login</a
+        >
+        {% endif %}
+      </div>
+    </nav>
+
+    {% block body_block %} {% endblock %}
+
+    <script src="{% static 'js/mdb.min.js' %}"></script>
+  </body>
+</html>

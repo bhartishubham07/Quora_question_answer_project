@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+<title>User - Registeration</title>
+{% endblock %}
+
+{% block body_block %}
+<h1 class="alert alert-danger text-center">Registeration Form</h1>
+<div class="row">
+    <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-dark rounded bg-white shadow p-5">
+        <h2 class="text-center">Create New User</h2>
+        <span class="ms-4">Already have an account?</span><a href="#" class="text-primary fw-bold text-decoration-none">Login Here</a>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{UFO.as_p}}
+
+<div class="mt-2 text-center">
+    <input type="submit" class="btn btn-primary my-2" value="Register">
+</div>
+</form>
+    </div>
+</div>
+
+{% endblock %}
