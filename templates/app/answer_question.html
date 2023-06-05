@@ -1,26 +1,25 @@
 {% extends 'app/base.html' %} {% block title %}
 
 <title>Registration</title>
-{% endblock %} {% block body_block %}
-<div>
-  <center>
-    <h1>Answer the Question</h1>
+{% endblock %} 
+{% block body_block %}
+    <h1 class="alert alert-secondary text-center">Answer the Question</h1>
     <br>
   
-  <div class="container">
-    <h2>{{question.title}}</h2>
-    <p>{{question.description}}</p>
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-dark rounded bg-white shadow p-5">
+        <h2>{{question.title}}</h2>
+        <p>{{question.description}}</p>
 
-    <form method="POST">
-      {% csrf_token %} 
-      {{AQO.as_p}}
+          <form method="POST">
+            {% csrf_token %} 
+            {{AQO.as_p}}
 
-      
-        <input type="submit" value="Post">
-    
-      <br><br><br><br>
-    </form>
-  </div>
-</center>
-</div>
+            
+              <input type="submit" value="Post" class="btn btn-secondary">
+          
+            <br><br><br><br>
+          </form>
+      </div>   
+    </div>
 {% endblock %}

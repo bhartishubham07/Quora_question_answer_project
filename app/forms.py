@@ -25,10 +25,25 @@ class LoginForm(forms.ModelForm):
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['title', 'description']
+        fields = ['title']
         
+        labels={
+            'title': 'Write Question :',
+        }
+        widgets={
+            'title':forms.TextInput(attrs={'class':'form-control'})
+        }
 
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ['question','description']
+        
+        labels={
+            'question': 'Select Question',
+            'description': 'Write Answer Here :',
+        }
+        widgets={
+            'description':forms.Textarea(attrs={'class':'form-control','rows':3, 'cols':20}),
+            'question':forms.Select(attrs={'class':'form-control'})
+        }

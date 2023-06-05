@@ -5,25 +5,24 @@
 {% endblock %}
 
 {% block body_block %}
-<div>
-    <center>
-    <h1>ASK QUESTION</h1>
+    <h1 class="alert alert-primary text-center">ASK QUESTION</h1>
     <br>
     
-    <div class="container">
+    <div class="row">
+        <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-dark rounded bg-white shadow p-5">
         
             <form method="POST" class="form-group">
                 {% csrf_token %}
                 
                     {{QFO.as_p}}
                   
-                <input type="submit" value="Post"><br>
+                <input type="submit" value="Post" class="btn btn-primary"><br>
                     
                     
             </form>
+        </div>
     </div>
-</center>
-</div>
+
  
           
 {% endblock %}

@@ -1,63 +1,31 @@
-{% extends 'app/base.html' %}
+{% extends 'app/base.html' %} {% block title %}
+<title>Home Page</title>
+{% endblock %} 
+{% block body_block %}
 
-{% block title %}
-    <title>Home Page</title>
-{% endblock %}
-
-{% block body_block  %}
 <center>
-
-<u style="color: white;"><h2> {{Qcl.title}}</h2><br></u>
-
-<style>
-    td{
-        text-align: center;
-    }
-
-    table{
-            border-collapse: separate;
-            border-spacing: 10px; 
-            border-top: 20px;
-        }
-</style>
-
-
-<table border="2px" style="text-align: center;">
+    <u class="text-center fw-bolder text-danger"><h2> {{Qcl.title}}</h2></u><br>
+<div style="margin: 0px 50px">
+<table border="2px" class="table table-hover table-bordered rounded bg-white shadow p-2">
+    <thead class="text-primary">
     <tr>
-        <th>Answer</th>
-        <th>Answered by</th>
-        <th>Answered on</th>
-        <th>Click to like</th>
-        <th>Liked By</th>
+      <th class="fw-bolder">Answer</th>
+      <th class="fw-bolder">Answered by</th>
+      <th class="fw-bolder">Answered on</th>
     </tr>
+</thead>
+<tbody>
     {% for i in Qcl.question.all %}
 
-        <tr style="color: white;">
-        <td > {{i.description}}</td>
-        <td> {{i.user}}</td>
-       
-        <td>{{i.created_at}}</td>
-        
-     
-        <td><form action="{% url 'like_post' %}" method="POST" class="ui form"  class="form-group1">
-            {% csrf_token %}
-            <input  type="checkbox" name="cb" id="cb" value="{{i.pk}}" >
-            <input type="submit" value="Like" style="background-color: #BDBDBD;">
-        </form></td>
-        <td>
-            {% for j in i.likes.all %}
-                <b>{{j.user}}</b>
-            {% endfor %}
-        </td>
-        </tr>
+    <tr>
+      <td>{{i.description}}</td>
+      <td>{{i.user}}</td>
+      <td>{{i.created_at}}</td>
+    </tr>
 
-     {% endfor %}
-
+    {% endfor %}
+</tbody>
 </table>
-
+</div>
 </center>
-
-
-
-
 {% endblock %}

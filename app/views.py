@@ -23,9 +23,9 @@ def registeration(request):
             NSUO.save()
             
 
-            return render(request,'app/reg_done.html')
+            return render(request,'app/register_done.html')
         else:
-            return render(request,'app/reg_not.html')
+            return render(request,'app/register_notdone.html')
     return render(request,'app/registeration.html',d)
 
 def register_done(request):

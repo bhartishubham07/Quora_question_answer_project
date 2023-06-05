@@ -1,21 +1,21 @@
-{% extends 'app/base.html' %}
+{% extends 'app/base.html' %} {% block title %}
+<title>Home Page</title>
+{% endblock %} {% block body_block %}
+<div style="margin: 30px 300px">
+<table border="3px" class="table table-hover table-bordered">
+  <thead>
+    <tr>
+        <th class="fw-bolder fs-1">List of Questions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for que in questions %}
+  <tr>
+    <td><a href="{{que.pk}}" class="fs-3">{{que.title}}</a></td>
 
-{% block title %}
-    <title>Home Page</title>
-{% endblock %}
+  </tr>
+  {% endfor %}
+</table>
+</div>
 
-{% block body_block  %}
-<center>
-    <div>
-        <u style="color: aliceblue;"><h1>List of Questions</h1><br></u>
-        {% for s in questions %}
-            {% csrf_token %}
-        <a href="{{s.pk}}"><h5>{{s.title}}</h5></a>
-    
-        
-    
-          {% endfor %}
-    </div>
-</center>
- 
 {% endblock %}
